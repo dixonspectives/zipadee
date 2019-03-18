@@ -3,17 +3,31 @@
 <head th:fragment="head">
 
     <meta charset="UTF-8"/>
-    <title th: text="${title}">Login to Zipadee</title>
+    <title th:text="${title}">Login to Zipadee</title>
 </head>
 <body>
 
-    <h1>Welcome to Zipadee!</h1>
-    <h4>Please Login to Your Chore List:</h4>
-    <form method ="post">
-        <input type="text" name="userName" />
-        <input type="password" name="userPassword" />
-        <input type="submit" value="Login" />
-    </form>
+    <div>
+        <div>
+
+            <h1>Welcome to Zipadee!</h1>
+            <h4>Please Login to Your Chore List:</h4>
+        <div>
+            <form th:action="@{/login}" th:object="${loginForm}" method ="post">
+                <p th:if="${invalidCredentials}" class="error">Username or Password is invalid.</p>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" />
+                <label for="userpassword">Password:</label>
+                <input type="password" id="userpassword" name="userpassword" />
+            <br/>
+                <input type="submit" value="Login" />
+            </form>
+            <br/>
+            <a href="/login/register">New User? Register Here.</a>
+        </div>
+        </div>
+    </div>
+
 
 </body>
 </html>
